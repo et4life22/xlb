@@ -20,7 +20,7 @@ collections:
       - {label: Publish Date, name: date, widget: datetime}
       - {label: Image, name: image, widget: image, required: true}
 
-      - {label: Weight, name: weight, widget: number}
+      - {label: Weight, name: weight, widget: string}
       - {label: Price, name: price, widget: number}
       - {label: Body, name: body, widget: markdown}
 
