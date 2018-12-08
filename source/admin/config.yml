@@ -82,5 +82,5 @@ collections:
           - label: Weight
             name: weight
             widget: select
-            options: ['kg', ' pieces', ' lb']
+            options: ['kg', ' pieces', ' ']
             default: 'kg'
