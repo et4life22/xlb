@@ -77,10 +77,10 @@ collections:
             name: currency
             widget: select
             options: ['€', '$', '£']
-            default: '€'
+            default: '$'
 
           - label: Weight
             name: weight
             widget: select
-            options: ['kg', ' st', ' lb']
-            default: 'kg'
+            options: [' pieces', ' piece', ' bun', ' buns', ' bowl]
+            default: ' pieces'
