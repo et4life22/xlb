@@ -82,5 +82,5 @@ collections:
           - label: Weight
             name: weight
             widget: select
-            options: ['pieces', ' piece', ' bun', ' buns', ' bowl]
-            default: 'piece'
+            options: ['kg', ' st', ' lb']
+            default: 'kg'
