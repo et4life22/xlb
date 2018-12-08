@@ -83,4 +83,4 @@ collections:
             name: weight
             widget: select
             options: ['pieces', ' piece', ' bun', ' buns', ' bowl]
-            default: 'pieces'
+            default: 'piece'
