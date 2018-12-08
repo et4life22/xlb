@@ -8,9 +8,9 @@
         h3 = product.title
       .price
         p 
-          - currency = data.settings.units.currency || '€' 
+          - currency = data.settings.units.currency || '$' 
           = currency + product.price 
       .weight
         p 
-          - weight = data.settings.units.weight || 'kg'
+          - weight = data.settings.units.weight || 'pieces'
           = product.weight + weight
