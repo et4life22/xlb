@@ -1,3 +1,5 @@
+//= require_tree .
+
 class @GoogleAnalytics
 
   @load: ->
