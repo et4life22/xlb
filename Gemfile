@@ -10,5 +10,3 @@ gem "bootstrap-sass", require: false
 
 gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
 gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw]
-
-gem 'rails_12factor', group: :production
