@@ -1,5 +1,5 @@
 hero:
-  image: ''
+  image: '/images/uploads/logo.jpg'
   title: Xiao Long Bao Restaurant
 story: |-
   Chinese fast food in San Francisco. Join us at either one of our locations!
