@@ -11,9 +11,9 @@ GEM
     autoprefixer-rails (8.6.5)
       execjs
     backports (3.11.4)
-    bootstrap-sass (3.3.7)
+    bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
+      sassc (>= 2.0.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -105,6 +105,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     sass (3.4.25)
+    sassc (2.2.1)
+      ffi (~> 1.9)
     servolux (0.13.0)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
