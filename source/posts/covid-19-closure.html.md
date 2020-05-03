@@ -1,7 +1,15 @@
 ---
-title: COVID-19 Closure
-date: 2020-03-27T20:02:46.620Z
-description: 'Closure due to COVID-19, Monday March 30th'
+title: COVID-19 Reopening
+date: 2020-05-03T20:02:46.620Z
+description: Reopening with limited menu, Friday May 8th
 image: /images/uploads/xlb.png
 ---
-Due to the COVID-19 pandemic, we will be closing our stores as of Monday March 30th for the foreseeable future. Please come by and support us by purchasing freshly made dim sum or by stocking up your freezer with our Pot Stickers and Xiao Long Bao. Come by the store for prices.
+Thank for your patience, prayers, and support during this trying time. We will be reopening on Friday, May 8th with a limited menu due to the COVID-19 pandemic. In addition to selling our freshly made food, we will be selling the frozen dumplings listed below. Cooking instructions can be found on our product page. Please locate the dumpling of choice on the product page and click on the picture to find the cooking instructions within the instructions. 
+
+
+
+**Frozen Foods** 
+
+* Xiao Long Bao  
+* Pot Stickers 
+* Chive & Pork Dumplings
