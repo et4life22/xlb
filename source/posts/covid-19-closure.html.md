@@ -1,6 +1,6 @@
 ---
 title: COVID-19 Reopening
-date: 2020-05-03T20:02:46.620Z
+date: 2020-05-04T00:39:23.583Z
 description: Reopening with limited menu, Friday May 8th
 image: /images/uploads/xlb.png
 ---
