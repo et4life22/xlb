@@ -89,3 +89,8 @@ configure :build do
   #activate :asset_hash
 
 end
+
+# config.rb
+activate :google_analytics do |ga|
+  ga.tracking_id = 'UA-XXXXXXX-X' # Replace with your property ID.
+end
