@@ -4,7 +4,6 @@ gem 'middleman', '~> 4.2.1'
 gem "middleman-blog"
 gem 'middleman-autoprefixer'
 gem "middleman-livereload"
-gem 'middleman-google-analytics', '~> 3.0'
 
 gem "slim"
 gem "bootstrap-sass", require: false
