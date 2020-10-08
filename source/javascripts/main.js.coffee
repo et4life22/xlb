@@ -9,36 +9,41 @@ nav_button.addEventListener 'click', (->
   nav_button.classList.toggle 'active'
 ), false
 
-# google_analytics.coffee
-class @GoogleAnalytics
-    @load: ->
-        # Load the analytics code
-        window['GoogleAnalyticsObject'] = 'ga'
-        window['ga'] = window['ga'] || ->
-            (window['ga'].q = window['ga'].q || []).push arguments
-        window['ga'].l = 1 * new Date()
-        # Add the script
-        googleScript = document.createElement("script")
-        googleScript.async = 1
-        googleScript.src = '//www.google-analytics.com/analytics.js'
-        firstScript = document.getElementsByTagName("script")[0]
-        firstScript.parentNode.insertBefore googleScript, firstScript
-        # Create the analytics
-        ga 'create', GoogleAnalytics.analyticsId(), 'auto'
-        # You can enable additional modules like so
-        # ga 'require', 'displayfeatures'
-        if typeof Turbolinks isnt 'undefined' and Turbolinks.supported
-            document.addEventListener "page:change", GoogleAnalytics.trackPageview, true
-        else
-            GoogleAnalytics.trackPageview()
-    @trackPageview: (url) ->
-        unless GoogleAnalytics.isLocalRequest()
-            if url
-                ga 'send', 'pageview', url
-            else
-                ga 'send', 'pageview'
-    @isLocalRequest: ->
-        document.domain.indexOf('dev') isnt -1
-    @analyticsId: ->
-        'UA-131389856-1'
-GoogleAnalytics.load()
+activate :google_analytics do |ga|
+  # Property ID (default = nil)
+  ga.tracking_id = 'UA-131389856-1'
+
+  # Removing the last octet of the IP address (default = false)
+  ga.anonymize_ip = false
+
+  # Tracking across a domain and its subdomains (default = nil)
+  ga.domain_name = 'example.com'
+
+  # Tracking across multiple domains and subdomains (default = false)
+  ga.allow_linker = false
+
+  # Enhanced Link Attribution (default = false)
+  ga.enhanced_link_attribution = false
+
+  # Container ID for Google Optimize (A/B Testing)
+  ga.optimize = 'GTM-123456'
+
+  # Log detail messages to the console (default = false)
+  ga.debug = false
+
+  # Trace debugging will output more verbose information to the console (default = false)
+  ga.debug_trace = false
+
+  # Disable extension (default = false)
+  ga.disable = true
+
+  # Testing your implementation without sending hits (default = true) in development
+  ga.test = true
+
+  # Compress the JavaScript code (default = false)
+  ga.minify = false
+
+  # Output style - :html includes <script> tag (default = :html)
+  ga.output = :js
+
+end
