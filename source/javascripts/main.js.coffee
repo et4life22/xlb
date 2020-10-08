@@ -9,13 +9,14 @@ nav_button.addEventListener 'click', (->
   nav_button.classList.toggle 'active'
 ), false
 
-# google_analytics.coffee
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131389856-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<
+script async src = "https://www.googletagmanager.com/gtag/js?id=UA-131389856-1" > < /script> <
+    script >
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-131389856-1');
-</script>
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+
+gtag('config', 'UA-131389856-1'); <
+/script>
