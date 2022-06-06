@@ -20,7 +20,7 @@ class @GoogleAnalytics
         # Add the script
         googleScript = document.createElement("script")
         googleScript.async = 1
-        googleScript.src = '//www.googletagmanager.com/gtag/js'
+        googleScript.src = '//www.google-analytics.com/analytics.js'
         firstScript = document.getElementsByTagName("script")[0]
         firstScript.parentNode.insertBefore googleScript, firstScript
         # Create the analytics
