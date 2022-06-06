@@ -1,10 +1,10 @@
 .hero {
   position: relative;
-  width: 100%;
+  width: 80%;
   height: 0;
-  padding-bottom: 75%;
+  padding-bottom: 65%;
   background-size: cover;
-  background-position: center;
+  background-position: center right;
   background-color: $background-secondary-color;
   .caption {
     @extend %container;
