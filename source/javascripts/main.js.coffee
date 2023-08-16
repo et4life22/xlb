@@ -10,35 +10,43 @@ nav_button.addEventListener 'click', (->
 ), false
 
 # google_analytics.coffee
-class @GoogleAnalytics
+class GoogleAnalytics
     @load: ->
         # Load the analytics code
-        window['GoogleAnalyticsObject'] = 'ga'
-        window['ga'] = window['ga'] || ->
-            (window['ga'].q = window['ga'].q || []).push arguments
-        window['ga'].l = 1 * new Date()
+        window.dataLayer = window.dataLayer || []
+        
         # Add the script
         googleScript = document.createElement("script")
-        googleScript.async = 1
-        googleScript.src = '//www.google-analytics.com/analytics.js'
+        googleScript.async = true
+        googleScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GoogleAnalytics.analyticsId()
         firstScript = document.getElementsByTagName("script")[0]
         firstScript.parentNode.insertBefore googleScript, firstScript
-        # Create the analytics
-        ga 'create', GoogleAnalytics.analyticsId(), 'auto'
-        # You can enable additional modules like so
-        # ga 'require', 'displayfeatures'
+        
+        # Initialize gtag
+        window.dataLayer.push({
+            'event': 'jsLoad',
+            'gtm.start': new Date().getTime()
+        });
+
+        gtag('js', new Date());
+        gtag('config', GoogleAnalytics.analyticsId());
+        
         if typeof Turbolinks isnt 'undefined' and Turbolinks.supported
-            document.addEventListener "page:change", GoogleAnalytics.trackPageview, true
+            document.addEventListener "turbolinks:load", GoogleAnalytics.trackPageview, true
         else
             GoogleAnalytics.trackPageview()
+    
     @trackPageview: (url) ->
         unless GoogleAnalytics.isLocalRequest()
             if url
-                ga 'send', 'pageview', url
+                gtag('config', GoogleAnalytics.analyticsId(), {'page_path': url});
             else
-                ga 'send', 'pageview'
+                gtag('config', GoogleAnalytics.analyticsId());
+    
     @isLocalRequest: ->
         document.domain.indexOf('dev') isnt -1
+    
     @analyticsId: ->
-        'UA-131389856-1'
+        'G-362424397'  # Replace with your GA4 property ID
+        
 GoogleAnalytics.load()
