@@ -4,13 +4,5 @@
     .meta
       h1 = product.title
 
-      .weight
-        - weight = data.settings.units.weight || ' '
-        span = product.weight + weight
-
-      .price
-        - currency = data.settings.units.currency || '$' 
-        span = currency + product.price 
-
     .body
       = markdown product.body
