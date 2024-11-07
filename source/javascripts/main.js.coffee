@@ -12,40 +12,43 @@ nav_button.addEventListener 'click', (->
 # google_analytics.coffee
 class GoogleAnalytics
     @load: ->
-        # Load the analytics code
+        # Initialize dataLayer
         window.dataLayer = window.dataLayer || []
-        
-        # Add the script
+
+        # Load the gtag.js script asynchronously
         googleScript = document.createElement("script")
         googleScript.async = true
         googleScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GoogleAnalytics.analyticsId()
         firstScript = document.getElementsByTagName("script")[0]
         firstScript.parentNode.insertBefore googleScript, firstScript
-        
-        # Initialize gtag
-        window.dataLayer.push({
-            'event': 'jsLoad',
-            'gtm.start': new Date().getTime()
-        });
 
-        gtag('js', new Date());
-        gtag('config', GoogleAnalytics.analyticsId());
+        # Define the gtag function
+        window.gtag = (arguments...) ->
+            window.dataLayer.push(arguments)
+
+        # Configure gtag with the GA4 ID
+        gtag('js', new Date())
+        gtag('config', GoogleAnalytics.analyticsId())
         
+        # Track pageviews on navigation changes
         if typeof Turbolinks isnt 'undefined' and Turbolinks.supported
             document.addEventListener "turbolinks:load", GoogleAnalytics.trackPageview, true
         else
             GoogleAnalytics.trackPageview()
     
+    # Function to track page views
     @trackPageview: (url) ->
         unless GoogleAnalytics.isLocalRequest()
             if url
-                gtag('config', GoogleAnalytics.analyticsId(), {'page_path': url});
+                gtag('config', GoogleAnalytics.analyticsId(), {'page_path': url})
             else
-                gtag('config', GoogleAnalytics.analyticsId());
-    
+                gtag('config', GoogleAnalytics.analyticsId())
+
+    # Check if request is local (to skip GA tracking)
     @isLocalRequest: ->
         document.domain.indexOf('dev') isnt -1
-    
+
+    # Define the Google Analytics ID
     @analyticsId: ->
         'G-CHQHV9P2T6'  # Replace with your GA4 property ID
         
