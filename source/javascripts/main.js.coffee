@@ -14,23 +14,25 @@ class GoogleAnalytics
     @load: ->
         # Load the analytics code
         window.dataLayer = window.dataLayer || []
-        
-        # Add the script
+
+        # Add the Google Analytics script dynamically
         googleScript = document.createElement("script")
         googleScript.async = true
         googleScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GoogleAnalytics.analyticsId()
         firstScript = document.getElementsByTagName("script")[0]
         firstScript.parentNode.insertBefore googleScript, firstScript
-        
-        # Initialize gtag
-        window.dataLayer.push({
-            'event': 'jsLoad',
-            'gtm.start': new Date().getTime()
-        });
 
-        gtag('js', new Date());
-        gtag('config', GoogleAnalytics.analyticsId());
+        # Initialize gtag
+        window.dataLayer.push({'event': 'jsLoad', 'gtm.start': new Date().getTime()})
         
+        # Set up gtag function if it's not already set
+        window.gtag = (arguments...) ->
+            window.dataLayer.push arguments
+
+        gtag('js', new Date())
+        gtag('config', GoogleAnalytics.analyticsId())
+        
+        # Track page views based on Turbolinks or regular page loads
         if typeof Turbolinks isnt 'undefined' and Turbolinks.supported
             document.addEventListener "turbolinks:load", GoogleAnalytics.trackPageview, true
         else
@@ -38,15 +40,13 @@ class GoogleAnalytics
     
     @trackPageview: (url) ->
         unless GoogleAnalytics.isLocalRequest()
-            if url
-                gtag('config', GoogleAnalytics.analyticsId(), {'page_path': url});
-            else
-                gtag('config', GoogleAnalytics.analyticsId());
+            # Set page path based on URL if available
+            gtag('config', GoogleAnalytics.analyticsId(), {'page_path': url || location.pathname})
     
     @isLocalRequest: ->
         document.domain.indexOf('dev') isnt -1
     
-    @analyticsId: ->
-        'G-CHQHV9P2T6'  # Replace with your GA4 property ID
-        
+    @analyticsId: -> 'G-CHQHV9P2T6'  # Replace with your GA4 property ID
+
+# Initialize Google Analytics
 GoogleAnalytics.load()
