@@ -10,3 +10,7 @@ gem "bootstrap-sass", require: false
 
 gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
 gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw]
+
+gem 'liquid'      # For Liquid templating
+gem 'less'        # For LESS CSS preprocessing
+gem 'stylus'      # For Stylus CSS preprocessing
