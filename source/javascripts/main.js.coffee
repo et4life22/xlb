@@ -47,6 +47,6 @@ class GoogleAnalytics
         document.domain.indexOf('dev') isnt -1
     
     @analyticsId: ->
-        'G-362424397'  # Replace with your GA4 property ID
+        'G-CHQHV9P2T6'  # Replace with your GA4 property ID
         
 GoogleAnalytics.load()
