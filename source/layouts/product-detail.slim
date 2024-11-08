@@ -6,6 +6,7 @@ html
 
     / Google Analytics
     script async src="https://www.googletagmanager.com/gtag/js?id=G-CHQHV9P2T6"
+    
     script
       |
         window.dataLayer = window.dataLayer || [];
@@ -17,7 +18,6 @@ html
     = partial 'partials/shared/header-primary'
 
     main.main-content
-
       = yield
 
-    = javascript_include_tag 'main', async: true
+    = javascript_include_tag 'main', defer: true
