@@ -4,6 +4,15 @@ html
     = partial 'layouts/meta'
     = stylesheet_link_tag "all"
 
+    / Google Analytics
+    script async src="https://www.googletagmanager.com/gtag/js?id=G-CHQHV9P2T6"
+    script
+      |
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CHQHV9P2T6');
+
   body
     = partial 'partials/shared/header-primary'
 
