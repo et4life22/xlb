@@ -1,19 +1,52 @@
-// Add a listener to toggle the navigation button
-document.addEventListener('DOMContentLoaded', function () {
-  var nav_button = document.querySelector('.nav-button');
-  var navigation = document.querySelector('.navigation');
+nav_button = document.querySelector('.nav-button')
+navigation = document.querySelector('.navigation')
 
-  if (nav_button) {
-    nav_button.addEventListener('click', function () {
-      // open navigation and change toggle button
-      navigation.classList.toggle('open');
-      nav_button.classList.toggle('active');
-    });
-  }
+# Listen for click event
+nav_button.addEventListener 'click', (->
 
-  // Google Analytics setup
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-CHQHV9P2T6');
-});
+  # open navigation and change toggle button
+  navigation.classList.toggle 'open'
+  nav_button.classList.toggle 'active'
+), false
+
+# google_analytics.coffee
+class GoogleAnalytics
+    @load: ->
+        # Load the analytics code
+        window.dataLayer = window.dataLayer || []
+        
+        # Add the script
+        googleScript = document.createElement("script")
+        googleScript.async = true
+        googleScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GoogleAnalytics.analyticsId()
+        firstScript = document.getElementsByTagName("script")[0]
+        firstScript.parentNode.insertBefore googleScript, firstScript
+        
+        # Initialize gtag
+        window.dataLayer.push({
+            'event': 'jsLoad',
+            'gtm.start': new Date().getTime()
+        });
+
+        gtag('js', new Date());
+        gtag('config', GoogleAnalytics.analyticsId());
+        
+        if typeof Turbolinks isnt 'undefined' and Turbolinks.supported
+            document.addEventListener "turbolinks:load", GoogleAnalytics.trackPageview, true
+        else
+            GoogleAnalytics.trackPageview()
+    
+    @trackPageview: (url) ->
+        unless GoogleAnalytics.isLocalRequest()
+            if url
+                gtag('config', GoogleAnalytics.analyticsId(), {'page_path': url});
+            else
+                gtag('config', GoogleAnalytics.analyticsId());
+    
+    @isLocalRequest: ->
+        document.domain.indexOf('dev') isnt -1
+    
+    @analyticsId: ->
+        'G-CHQHV9P2T6'  # Replace with your GA4 property ID
+        
+GoogleAnalytics.load()
