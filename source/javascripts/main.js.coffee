@@ -1,17 +1,31 @@
-# Google Analytics Setup
-(function() {
-  var script = document.createElement("script");
-  script.src = "https://www.googletagmanager.com/gtag/js?id=G-CHQHV9P2T6";
-  script.async = true;
-  document.head.appendChild(script);
+# Google Analytics
+class GoogleAnalytics
+  @load: ->
+    if window.gtag
+      # Initialize Google Analytics (only once)
+      gtag('js', new Date())
+      gtag('config', GoogleAnalytics.analyticsId())
 
-  script.onload = function() {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CHQHV9P2T6');
-  };
-})();
+    # Track page views using Turbolinks or normal navigation
+    if typeof Turbolinks != 'undefined' and Turbolinks.supported
+      document.addEventListener "turbolinks:load", GoogleAnalytics.trackPageview, true
+    else
+      GoogleAnalytics.trackPageview()
+
+  @trackPageview: (url) ->
+    unless GoogleAnalytics.isLocalRequest()
+      if url
+        gtag('config', GoogleAnalytics.analyticsId(), {'page_path': url})
+      else
+        gtag('config', GoogleAnalytics.analyticsId())
+
+  @isLocalRequest: ->
+    document.domain.indexOf('dev') isnt -1
+
+  @analyticsId: ->
+    'G-CHQHV9P2T6'  # Replace with your GA4 property ID
+
+GoogleAnalytics.load()
 
 # Navigation Toggle
 document.addEventListener 'DOMContentLoaded', ->
