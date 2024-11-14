@@ -1,6 +1,5 @@
-# If you want to use Bootstrap 5, you should include the correct gem in Gemfile (bootstrap)
-# require 'bootstrap'  # Uncomment this line if you are using bootstrap 5
-
+#Bootstrap is used to style bits of the demo. Remove it from the config, gemfile and stylesheets to stop using bootstrap
+require 'bootstrap-sass'
 require "uglifier"
 
 # Activate and configure extensions
@@ -18,7 +17,6 @@ activate :autoprefixer do |prefix|
 end
 
 activate :livereload
-
 # Layouts
 # https://middlemanapp.com/basics/layouts/
 
@@ -34,6 +32,9 @@ activate :blog do |blog|
   blog.sources = "posts/{title}.html"
   blog.layout = "news-detail"
 end
+
+# With alternative layout
+# page '/path/to/file.html', layout: 'other_layout'
 
 # Proxy pages
 # https://middlemanapp.com/advanced/dynamic-pages/
@@ -55,7 +56,7 @@ end
 activate :directory_indexes
 
 helpers do
-  # helper to set background images with asset hashes in a style attribute
+  #helper to set background images with asset hashes in a style attribute
   def background_image(image)
     "background-image: url('" << image_path(image) << "')"
   end
@@ -84,6 +85,7 @@ configure :build do
   # Use Gzip
   activate :gzip
 
-  # Use asset hashes for caching (uncomment if you want to use it)
-  # activate :asset_hash
+  #Use asset hashes to use for caching
+  #activate :asset_hash
+
 end
