@@ -7,15 +7,8 @@ html
     // Include netlify identity widget for user registration
     script src="https://identity.netlify.com/v1/netlify-identity-widget.js" type="text/javascript"
 
-    // Google Analytics
-    script async src="https://www.googletagmanager.com/gtag/js?id=G-CHQHV9P2T6"
-    
-    script
-      |
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-CHQHV9P2T6')
+    // Umami Analytics
+    script defer src="https://cloud.umami.is/script.js" data-website-id="af7080ad-585f-4dd0-9c12-63f1279b9fce"
 
   body
     = partial 'partials/shared/header-primary'
