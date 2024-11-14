@@ -7,28 +7,18 @@ html
     // Include netlify identity widget for user registration
     script src="https://identity.netlify.com/v1/netlify-identity-widget.js" type="text/javascript"
 
-    // Turbolinks
-    script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" integrity="sha384-RHRwEObIQkmd6HszQGAjcuCkFnauI4xT9rN+jAGrG5rh5G3yN1Km06tSmvKOjkgA" crossorigin="anonymous"
-    script
-      | Turbolinks.start()
-
     // Google Analytics
     script async src="https://www.googletagmanager.com/gtag/js?id=G-CHQHV9P2T6"
+    
     script
       |
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-CHQHV9P2T6');
+        gtag('config', 'G-CHQHV9P2T6')
 
-    // Turbolinks page tracking with Google Analytics
-    script
-      |
-        document.addEventListener("turbolinks:load", function() {
-          gtag('config', 'G-CHQHV9P2T6', {
-            'page_path': window.location.pathname
-          });
-        });
+    // Cookiebot - add this script
+    script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="4b4df045-13fa-4177-8254-c618a1fad754" type="text/javascript" async
 
   body
     = partial 'partials/shared/header-primary'
