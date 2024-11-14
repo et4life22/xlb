@@ -1,31 +1,11 @@
-# Google Analytics
-class GoogleAnalytics
-  @load: ->
-    if window.gtag
-      # Initialize Google Analytics (only once)
-      gtag('js', new Date())
-      gtag('config', GoogleAnalytics.analyticsId())
-
-    # Track page views using Turbolinks or normal navigation
-    if typeof Turbolinks != 'undefined' and Turbolinks.supported
-      document.addEventListener "turbolinks:load", GoogleAnalytics.trackPageview, true
-    else
-      GoogleAnalytics.trackPageview()
-
-  @trackPageview: (url) ->
-    unless GoogleAnalytics.isLocalRequest()
-      if url
-        gtag('config', GoogleAnalytics.analyticsId(), {'page_path': url})
-      else
-        gtag('config', GoogleAnalytics.analyticsId())
-
-  @isLocalRequest: ->
-    document.domain.indexOf('dev') isnt -1
-
-  @analyticsId: ->
-    'G-CHQHV9P2T6'  # Replace with your GA4 property ID
-
-GoogleAnalytics.load()
+# Umami Page View Tracking (if Turbolinks is enabled)
+if typeof Turbolinks != 'undefined' and Turbolinks.supported
+  document.addEventListener "turbolinks:load", ->
+    if window.umami
+      umami.trackView()  # Track page view for Turbolinks navigation
+else
+  if window.umami
+    umami.trackView()  # Track initial page load
 
 # Navigation Toggle
 document.addEventListener 'DOMContentLoaded', ->
