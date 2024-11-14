@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'middleman', '~> 4.2.1'
+gem 'middleman', '~> 5.0'
 gem "middleman-blog"
 gem 'middleman-autoprefixer'
 gem "middleman-livereload"
 
 gem "slim"
-gem "bootstrap-sass", require: false
+gem "bootstrap", "~> 5.0"  # Updated to Bootstrap 5
 
 gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
-gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw]
+gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw] # You can remove this if you're not on Windows
