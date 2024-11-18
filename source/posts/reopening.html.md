@@ -13,6 +13,6 @@ In addition to selling our freshly made food, we will be selling the frozen dump
 
 **Frozen Foods** 
 
-* Xiao Long Bao - 24 pieces / $18.00
-* Pot Stickers - 24 pieces / $18.00
-* Chive/Bok Choy & Pork Dumplings - 30 pieces / $12.00
+* Xiao Long Bao - 24 pieces 
+* Pot Stickers - 24 pieces 
+* Chive/Bok Choy & Pork Dumplings - 30 pieces 
