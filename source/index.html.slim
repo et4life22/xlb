@@ -2,34 +2,46 @@
 title: Xiao Long Bao Restaurant
 ---
 
-section.hero style=background_image(image_path(data.pages.home.hero.image))
-  .caption
-    .row
-      h1 = data.pages.home.hero.title
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta http-equiv="x-ua-compatible" content="ie=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    title Xiao Long Bao Restaurant
 
-section.homepage-story
-  .container
-    .row
-      .story-content
-        = markdown data.pages.home.story
+    // Umami Analytics
+    script defer src="https://cloud.umami.is/script.js" data-website-id="af7080ad-585f-4dd0-9c12-63f1279b9fce"
 
-section.homepage-products.products
-  .container
-    h2
-      | Products
-    .row
-      //product is structured: ['filename', 'data']
-      //sort by newest product
-      - data.products.sort {|a,b| b[1].date <=> a[1].date}.first(3).each do | product |
+  body
+    section.hero style=background_image(image_path(data.pages.home.hero.image))
+      .caption
+        .row
+          h1 = data.pages.home.hero.title
 
-        //to get the actual data:
-        = partial 'partials/products/product', locals: {product: product[1]}
+    section.homepage-story
+      .container
+        .row
+          .story-content
+            = markdown data.pages.home.story
 
-section.homepage-news.news
-  .container
-    h2
-      | News
-    .news-items
-      //get the first two most recent posts
-      - blog.articles.first(2).each do | article |
-        = partial 'partials/news/news_item', locals: {article: article}
+    section.homepage-products.products
+      .container
+        h2
+          | Products
+        .row
+          //product is structured: ['filename', 'data']
+          //sort by newest product
+          - data.products.sort {|a,b| b[1].date <=> a[1].date}.first(3).each do | product |
+
+            //to get the actual data:
+            = partial 'partials/products/product', locals: {product: product[1]}
+
+    section.homepage-news.news
+      .container
+        h2
+          | News
+        .news-items
+          //get the first two most recent posts
+          - blog.articles.first(2).each do | article |
+            = partial 'partials/news/news_item', locals: {article: article}
