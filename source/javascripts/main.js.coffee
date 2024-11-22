@@ -1,11 +1,12 @@
 # Umami Page View Tracking (if Turbolinks is enabled)
+initializeTracking = ->
+  if window.umami and typeof window.umami.trackView == 'function'
+    umami.trackView()  # Track page view
+
 if typeof Turbolinks != 'undefined' and Turbolinks.supported
-  document.addEventListener "turbolinks:load", ->
-    if window.umami
-      umami.trackView()  # Track page view for Turbolinks navigation
+  document.addEventListener "turbolinks:load", -> initializeTracking()
 else
-  if window.umami
-    umami.trackView()  # Track initial page load
+  document.addEventListener 'DOMContentLoaded', -> initializeTracking()
 
 # Navigation Toggle
 document.addEventListener 'DOMContentLoaded', ->
