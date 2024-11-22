@@ -1,6 +1,8 @@
 initializeTracking = ->
   if window.umami and typeof window.umami.trackView == 'function'
-    umami.trackView(document.location.pathname, document.title)
+    pagePath = document.location.pathname  # Current page path
+    pageTitle = document.title            # Current page title
+    umami.trackView(pagePath, pageTitle)
 
 if typeof Turbolinks != 'undefined' and Turbolinks.supported
   document.addEventListener "turbolinks:load", -> initializeTracking()
